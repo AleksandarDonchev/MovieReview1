@@ -7,7 +7,7 @@
         public int Rating { get; set; }
         public DateTime Birthday { get; set; }
 
-        //many-to-many relation
-        public virtual ICollection<Movie> Movies { get; set; }
+        public string MovieId { get; set; }
+        public Movie Movie { get; set; }
     }
 }

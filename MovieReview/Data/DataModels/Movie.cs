@@ -11,10 +11,8 @@ namespace MovieReview.Data.DataModels
         public string Description { get; set; }
         public int Rating { get; set; }
 
-        //many-to-many
-        public virtual ICollection<User> Users { get; set; }
-
-        //many-to-many
-        public virtual ICollection<Director> Directors { get; set; }
+        public Review Review { get; set; }
+        public Actor Actor { get; set; }
+        public Director Director { get; set; }
     }
 }

@@ -7,12 +7,12 @@ namespace MovieReview.Data.DataModels
         public string Id { get; set; }
         public string Username { get; set; }
         public int Rating { get; set; }
-        public List<string> Comments { get; set; }
+        public string Comments { get; set; }
 
-        //many-to-one
-        public virtual ICollection<Movie> Movies { get; set; }
-        //many-to-one
+        public string MovieId { get; set; }
+        public Movie Movie { get; set; }
 
-        public virtual ICollection<User> Users { get; set; }
+        public string UserId { get; set; }
+        public User User { get; set; }
     }
 }

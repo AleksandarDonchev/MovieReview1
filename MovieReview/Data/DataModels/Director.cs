@@ -7,7 +7,7 @@
         public string Nationality { get; set; }
         public DateTime Birthday { get; set; }
 
-        //many-to-many
-        public virtual ICollection<Movie> Movies { get; set; }
+        public string MovieId { get; set; }
+        public Movie Movie { get; set; }
     }
 }
