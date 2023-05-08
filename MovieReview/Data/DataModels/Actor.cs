@@ -7,7 +7,7 @@
         public int Rating { get; set; }
         public DateTime Birthday { get; set; }
 
-        public string MovieId { get; set; }
-        public Movie Movie { get; set; }
+        //public string MovieId { get; set; }
+        //public Movie Movie { get; set; }
     }
 }

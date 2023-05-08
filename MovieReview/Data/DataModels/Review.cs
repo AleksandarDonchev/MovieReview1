@@ -9,10 +9,10 @@ namespace MovieReview.Data.DataModels
         public int Rating { get; set; }
         public string Comments { get; set; }
 
-        public string MovieId { get; set; }
-        public Movie Movie { get; set; }
+        //public string MovieId { get; set; }
+        //public Movie Movie { get; set; }
 
-        public string UserId { get; set; }
-        public User User { get; set; }
+        //public string UserId { get; set; }
+        //public User User { get; set; }
     }
 }

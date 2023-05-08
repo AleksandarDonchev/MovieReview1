@@ -1,21 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using MovieReview.Data;
 using MovieReview.Data.DataModels;
+using MovieReview.Data.ViewModels;
+using MovieReview.Services;
 
 namespace MovieReview.Controllers
 {
     public class MovieController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        public MovieController(ApplicationDbContext db)
+   
+        private readonly IMovieServices _services;
+        private readonly IMapper _mapper;
+        public MovieController(IMovieServices services,IMapper mapper)
         {
-            _db = db;
+            _services= services;
+            _mapper= mapper;
         }
 
 
         public IActionResult Index()
         {
-            IEnumerable<Movie> objMovieList = _db.Movies;
+            var objMovieList = _services.GetAll();
             return View(objMovieList);
         }
 
@@ -28,10 +34,9 @@ namespace MovieReview.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public IActionResult Create(Movie obj)
+        public IActionResult Create(MovieViewModel movieViewModel)
         {
-            _db.Movies.Add(obj);
-            _db.SaveChanges();
+            _services.Add(movieViewModel);
             return RedirectToAction("Index");
         }
     }
