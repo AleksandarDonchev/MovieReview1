@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gkEtV+r4CH7Cs+8mQn0pd1vXe+llR56wkesTrDIIYp8=",
+  "Hash": "d6pjcmBO1rIqFmDZm8sNdWNhXMEjr6PS3BY3GGBaxrA=",
   "Source": "MovieReview",
   "BasePath": "_content/MovieReview",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\ASP.NET project\\MovieReview\\MovieReview\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\MovieReview.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\ASP.NET project\\MovieReview\\MovieReview\\wwwroot\\css\\bootswatchTheme.css",
+      "SourceId": "MovieReview",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ASP.NET project\\MovieReview\\MovieReview\\wwwroot\\",
+      "BasePath": "_content/MovieReview",
+      "RelativePath": "css/bootswatchTheme.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\bootswatchTheme.css"
     },
     {
       "Identity": "D:\\ASP.NET project\\MovieReview\\MovieReview\\wwwroot\\css\\site.css",
