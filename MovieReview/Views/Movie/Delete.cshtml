@@ -1,0 +1,24 @@
+﻿@model MovieViewModel
+
+<h2>Delete Movie</h2>
+
+<p>Are you sure you want to delete the movie with the following details?</p>
+
+<div>
+    <h4>Title: @Model.Title</h4>
+    <p>Release Year: @Model.ReleaseYear</p>
+    <p>Genre: @Model.Genre</p>
+    <p>Description: @Model.Description</p>
+    <p>Rating: @Model.Rating</p>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+    </div>
+}
+

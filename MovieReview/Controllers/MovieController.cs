@@ -12,6 +12,7 @@ namespace MovieReview.Controllers
    
         private readonly IMovieServices _services;
         private readonly IMapper _mapper;
+       
         public MovieController(IMovieServices services,IMapper mapper)
         {
             _services= services;
@@ -39,5 +40,47 @@ namespace MovieReview.Controllers
             _services.Add(movieViewModel);
             return RedirectToAction("Index");
         }
+
+        public IActionResult Update(int id) 
+        {
+            var movie = _services.GetMovieById(id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+            var movieViewModel = _mapper.Map<MovieViewModel>(movie);
+            return View(movieViewModel);
+           
+
+        }
+
+
+        public IActionResult Delete(int id) 
+        {
+            var movie = _services.GetMovieById(id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+            var movieViewModel = _mapper.Map<MovieViewModel>(movie);
+            return View(movieViewModel);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var movie = _services.GetMovieById(id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+            _services.Delete(movie);  
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }
