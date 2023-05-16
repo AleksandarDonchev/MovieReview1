@@ -39,7 +39,7 @@ namespace MovieReview.Services
         public void Update(MovieViewModel movieViewModel)
         {
             var movie = _mapper.Map<Movie>(movieViewModel);
-            _db.Entry(movie).State = EntityState.Modified;
+            _db.Update(movie);
             _db.SaveChanges();
         }
 

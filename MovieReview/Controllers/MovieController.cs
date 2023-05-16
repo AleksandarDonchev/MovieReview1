@@ -50,9 +50,18 @@ namespace MovieReview.Controllers
             }
             var movieViewModel = _mapper.Map<MovieViewModel>(movie);
             return View(movieViewModel);
-           
-
+          
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(MovieViewModel movieUpdateModel)
+        {
+            _services.Update(movieUpdateModel);
+            return RedirectToAction("Index");
+        }
+
+
 
 
         public IActionResult Delete(int id) 
@@ -69,14 +78,10 @@ namespace MovieReview.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(MovieViewModel movieDeleteModel)
         {
-            var movie = _services.GetMovieById(id);
-            if (movie == null)
-            {
-                return NotFound();
-            }
-            _services.Delete(movie);  
+            
+            _services.Delete(movieDeleteModel);  
             return RedirectToAction("Index");
         }
 
