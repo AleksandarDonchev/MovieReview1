@@ -1,8 +1,12 @@
-﻿namespace MovieReview.Data.DataModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MovieReview.Data.DataModels
 {
     public class Actor
     {
-        public string Id { get; set; }
+        [Key]
+        public int Id { get; set; }
+        
         public string FullName { get; set; }
         public int Rating { get; set; }
         public DateTime Birthday { get; set; }

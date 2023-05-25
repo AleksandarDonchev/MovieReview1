@@ -1,0 +1,21 @@
+﻿@model ActorViewModel
+
+<h2>Delete Actor</h2>
+
+<p>Are you sure you want to delete the actor with the following details?</p>
+
+<div>
+    <h4>Title: @Model.FullName</h4>
+    <p>Release Year: @Model.Rating</p>
+    <p>Genre: @Model.Birthday</p>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <a asp-controller="Actor" asp-action="DeleteConfirmed" class="btn btn-primary mx-1">Delete</a>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+    </div>
+}

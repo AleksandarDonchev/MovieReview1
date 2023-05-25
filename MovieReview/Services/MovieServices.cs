@@ -43,11 +43,14 @@ namespace MovieReview.Services
             _db.SaveChanges();
         }
 
-        public void Delete(MovieViewModel movieViewModel)
+        public async Task Delete(int id)
         {
-            var movie = _mapper.Map<Movie>(movieViewModel);
+            var movie = _db.Movies.FirstOrDefault(x => x.Id == id);
             _db.Movies.Remove(movie);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
+            //var movie = _mapper.Map<Movie>(movieViewModel);
+            //_db.Movies.Remove(movie);
+            //_db.SaveChanges();
         }
     }
 }

@@ -228,8 +228,11 @@ namespace MovieReview.Migrations
 
             modelBuilder.Entity("MovieReview.Data.DataModels.Actor", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime2");
@@ -248,8 +251,11 @@ namespace MovieReview.Migrations
 
             modelBuilder.Entity("MovieReview.Data.DataModels.Director", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime2");

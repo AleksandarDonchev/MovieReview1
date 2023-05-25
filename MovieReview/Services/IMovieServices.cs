@@ -8,7 +8,7 @@ namespace MovieReview.Services
         MovieViewModel GetMovieById(int id);
         void Add(MovieViewModel movieViewModel);
         void Update(MovieViewModel movieViewModel);
-        void Delete(MovieViewModel movieViewModel);
+        Task Delete(int id);
 
     }
 }

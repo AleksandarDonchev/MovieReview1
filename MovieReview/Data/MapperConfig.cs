@@ -9,6 +9,7 @@ namespace MovieReview.Data
         public MapperConfig()
         {
             CreateMap<Movie, MovieViewModel>().ReverseMap();
+            CreateMap<Actor, ActorViewModel>().ReverseMap();
         }
         
     }

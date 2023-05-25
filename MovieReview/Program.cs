@@ -11,6 +11,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<IMovieServices, MovieServices>();
+builder.Services.AddScoped<IActorServices, ActorServices>();
 builder.Services.AddAutoMapper(typeof(MapperConfig));
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 

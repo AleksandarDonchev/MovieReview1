@@ -1,63 +1,60 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using MovieReview.Data;
-using MovieReview.Data.DataModels;
 using MovieReview.Data.ViewModels;
 using MovieReview.Services;
 
 namespace MovieReview.Controllers
 {
-    public class MovieController : Controller
+    public class ActorController : Controller
     {
-   
-        private readonly IMovieServices _services;
+        private readonly IActorServices _services;
         private readonly IMapper _mapper;
-       
-        public MovieController(IMovieServices services,IMapper mapper)
+
+        public ActorController(IActorServices services, IMapper mapper)
         {
-            _services= services;
-            _mapper= mapper;
+            _services = services;
+            _mapper = mapper;
         }
 
 
         public IActionResult Index()
         {
-            var objMovieList = _services.GetAll();
-            return View(objMovieList);
+            var objActorList = _services.GetAll();
+            return View(objActorList);
         }
 
         public IActionResult Create()
         {
-            
+
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public IActionResult Create(MovieViewModel movieViewModel)
+        public IActionResult Create(ActorViewModel actorViewModel)
         {
-            _services.Add(movieViewModel);
+            _services.Add(actorViewModel);
             return RedirectToAction("Index");
         }
 
-        public IActionResult Update(int id) 
+        public IActionResult Update(int id)
         {
-            var movie = _services.GetMovieById(id);
-            if (movie == null)
+            var actor = _services.GetActorById(id);
+            if (actor == null)
             {
                 return NotFound();
             }
-            var movieViewModel = _mapper.Map<MovieViewModel>(movie);
-            return View(movieViewModel);
-          
+            var actorViewModel = _mapper.Map<ActorViewModel>(actor);
+            return View(actorViewModel);
+
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(MovieViewModel movieUpdateModel)
+        public IActionResult Update(ActorViewModel actorUpdateModel)
         {
-            _services.Update(movieUpdateModel);
+            _services.Update(actorUpdateModel);
             return RedirectToAction("Index");
         }
 
@@ -71,14 +68,11 @@ namespace MovieReview.Controllers
         }
 
 
-        public IActionResult DeleteConfirmed(MovieViewModel movieDeleteModel)
+        public IActionResult DeleteConfirmed(ActorViewModel actorDeleteModel)
         {
-            
+
             //_services.Delete(movieDeleteModel);  
             return RedirectToAction("Index");
         }
-
-
-
     }
 }
