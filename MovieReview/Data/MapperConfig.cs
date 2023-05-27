@@ -11,6 +11,7 @@ namespace MovieReview.Data
             CreateMap<Movie, MovieViewModel>().ReverseMap();
             CreateMap<Actor, ActorViewModel>().ReverseMap();
             CreateMap<Director, DirectorViewModel>().ReverseMap();
+            CreateMap<Review , ReviewViewModel>().ReverseMap();
         }
         
     }

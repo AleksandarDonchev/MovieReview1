@@ -18,10 +18,14 @@ namespace MovieReview.Data.DataModels
         public string Description { get; set; }
         public int Rating { get; set; }
 
+        public ICollection<MovieActor> MovieActors { get; set; }
+        public ICollection<MovieDirector> MovieDirectors { get; set; }
+        public ICollection<MovieReview> MovieReviews { get; set; }
+
         //public Review Review { get; set; }
         //public Actor Actor { get; set; }
         //public Director Director { get; set; }
 
-       
+
     }
 }

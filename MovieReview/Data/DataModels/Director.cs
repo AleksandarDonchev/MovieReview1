@@ -12,6 +12,8 @@ namespace MovieReview.Data.DataModels
         public string Nationality { get; set; }
         public DateTime Birthday { get; set; }
 
+
+        public ICollection<MovieDirector> MovieDirectors { get; set; }
         //public string MovieId { get; set; }
         //public Movie Movie { get; set; }
     }

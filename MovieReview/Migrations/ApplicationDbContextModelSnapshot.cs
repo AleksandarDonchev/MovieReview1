@@ -304,10 +304,82 @@ namespace MovieReview.Migrations
                     b.ToTable("Movies");
                 });
 
+            modelBuilder.Entity("MovieReview.Data.DataModels.MovieActor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ActorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ActorId");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("MovieActor");
+                });
+
+            modelBuilder.Entity("MovieReview.Data.DataModels.MovieDirector", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("DirectorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DirectorId");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("MovieDirector");
+                });
+
+            modelBuilder.Entity("MovieReview.Data.DataModels.MovieReview", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReviewId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
+
+                    b.HasIndex("ReviewId");
+
+                    b.ToTable("MovieReview");
+                });
+
             modelBuilder.Entity("MovieReview.Data.DataModels.Review", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Comments")
                         .IsRequired()
@@ -381,6 +453,87 @@ namespace MovieReview.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("MovieReview.Data.DataModels.MovieActor", b =>
+                {
+                    b.HasOne("MovieReview.Data.DataModels.Actor", "Actor")
+                        .WithMany("MovieActors")
+                        .HasForeignKey("ActorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MovieReview.Data.DataModels.Movie", "Movie")
+                        .WithMany("MovieActors")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Actor");
+
+                    b.Navigation("Movie");
+                });
+
+            modelBuilder.Entity("MovieReview.Data.DataModels.MovieDirector", b =>
+                {
+                    b.HasOne("MovieReview.Data.DataModels.Director", "Director")
+                        .WithMany("MovieDirectors")
+                        .HasForeignKey("DirectorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MovieReview.Data.DataModels.Movie", "Movie")
+                        .WithMany("MovieDirectors")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Director");
+
+                    b.Navigation("Movie");
+                });
+
+            modelBuilder.Entity("MovieReview.Data.DataModels.MovieReview", b =>
+                {
+                    b.HasOne("MovieReview.Data.DataModels.Movie", "Movie")
+                        .WithMany("MovieReviews")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MovieReview.Data.DataModels.Review", "Review")
+                        .WithMany("MovieReviews")
+                        .HasForeignKey("ReviewId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movie");
+
+                    b.Navigation("Review");
+                });
+
+            modelBuilder.Entity("MovieReview.Data.DataModels.Actor", b =>
+                {
+                    b.Navigation("MovieActors");
+                });
+
+            modelBuilder.Entity("MovieReview.Data.DataModels.Director", b =>
+                {
+                    b.Navigation("MovieDirectors");
+                });
+
+            modelBuilder.Entity("MovieReview.Data.DataModels.Movie", b =>
+                {
+                    b.Navigation("MovieActors");
+
+                    b.Navigation("MovieDirectors");
+
+                    b.Navigation("MovieReviews");
+                });
+
+            modelBuilder.Entity("MovieReview.Data.DataModels.Review", b =>
+                {
+                    b.Navigation("MovieReviews");
                 });
 #pragma warning restore 612, 618
         }

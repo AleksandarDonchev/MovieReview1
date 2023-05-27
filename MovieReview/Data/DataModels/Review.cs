@@ -6,11 +6,13 @@ namespace MovieReview.Data.DataModels
     public class Review
     {
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string Username { get; set; }
         public int Rating { get; set; }
         public string Comments { get; set; }
+
+        public ICollection<MovieReview> MovieReviews { get; set; }
 
         //public string MovieId { get; set; }
         //public Movie Movie { get; set; }

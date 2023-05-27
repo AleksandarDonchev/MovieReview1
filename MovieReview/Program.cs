@@ -13,6 +13,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IMovieServices, MovieServices>();
 builder.Services.AddScoped<IActorServices, ActorServices>();
 builder.Services.AddScoped<IDirectorServices, DirectorServices>();
+builder.Services.AddScoped<IReviewServices, ReviewServices>();
 builder.Services.AddAutoMapper(typeof(MapperConfig));
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 

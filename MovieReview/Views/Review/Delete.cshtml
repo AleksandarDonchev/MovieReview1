@@ -1,0 +1,21 @@
+﻿@model ReviewViewModel
+
+<h2>Delete Review</h2>
+
+<p>Are you sure you want to delete the Review with the following details?</p>
+
+<div>
+    <h4>Title: @Model.Username</h4>
+    <p>Release Year: @Model.Rating</p>
+    <p>Genre: @Model.Comments</p>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <a asp-controller="Review" asp-action="DeleteConfirmed" class="btn btn-primary mx-1">Delete</a>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+    </div>
+}
