@@ -1,9 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MovieReview.Models;
+using RestSharp;
+using RestSharp.Authenticators;
 using System.Diagnostics;
+using System.Threading;
 
 namespace MovieReview.Controllers
 {
+    [Authorize(Roles = "Member")]
+   
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

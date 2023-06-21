@@ -5,6 +5,6 @@ namespace MovieReview.Data.DataModels
 {
     public class User : IdentityUser
     {
-      //public Review Review { get; set; }
+    
     }
 }

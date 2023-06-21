@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using MovieReview.Data;
 using MovieReview.Data.DataModels;
 using MovieReview.Data.ViewModels;
+using Newtonsoft.Json;
+using RestSharp;
+using System.Text.Json;
 
 namespace MovieReview.Services
 {
@@ -10,6 +13,8 @@ namespace MovieReview.Services
     {
         private readonly ApplicationDbContext _db;
         private readonly IMapper _mapper;
+        static HttpClient client = new HttpClient();
+
 
         public MovieViewModel GetMovieById(int id)
         {
@@ -23,7 +28,10 @@ namespace MovieReview.Services
             _db = db;
             _mapper = mapper;
         }
-        public IEnumerable<MovieViewModel> GetAll() 
+
+       
+
+        public IEnumerable<MovieViewModel> GetAll()
         {
             var movies = _db.Movies.ToList();
             var movieViewModels = _mapper.Map<IEnumerable<MovieViewModel>>(movies);
@@ -52,5 +60,14 @@ namespace MovieReview.Services
             //_db.Movies.Remove(movie);
             //_db.SaveChanges();
         }
+
+
+
+       
+
+
+       
+
+      
     }
 }

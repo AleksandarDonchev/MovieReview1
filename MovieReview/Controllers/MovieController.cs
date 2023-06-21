@@ -1,25 +1,33 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MovieReview.Data;
 using MovieReview.Data.DataModels;
 using MovieReview.Data.ViewModels;
 using MovieReview.Services;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Text;
 
 namespace MovieReview.Controllers
 {
+  
+
     public class MovieController : Controller
     {
    
         private readonly IMovieServices _services;
         private readonly IMapper _mapper;
-       
-        public MovieController(IMovieServices services,IMapper mapper)
+ 
+
+        public MovieController(IMovieServices services, IMapper mapper)
         {
-            _services= services;
-            _mapper= mapper;
+            _services = services;
+            _mapper = mapper;
+   
         }
 
-
+  
         public IActionResult Index()
         {
             var objMovieList = _services.GetAll();
@@ -41,6 +49,7 @@ namespace MovieReview.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Update(int id) 
         {
             var movie = _services.GetMovieById(id);
@@ -63,7 +72,7 @@ namespace MovieReview.Controllers
 
 
 
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             await _services.Delete(id);
